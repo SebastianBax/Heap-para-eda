@@ -47,28 +47,31 @@ public:
 		}
 	}
 
-	void imprimirOrdenado() {
-		imprimirOrdenadoR(5, 0);
-	}
+void imprimirOrdenado() {
+    int contador = 0;
+    imprimirOrdenadoR(5, contador); // empieza desde la prioridad máxima
+}
 
-	void imprimirOrdenadoR(int prioridad, int& contador) {
-		if (prioridad == 0 || contador >= 5) return;
+void imprimirOrdenadoR(int prioridad, int& contador) {
+    if (prioridad == 0 || contador >= 5) return;
 
-		for (int i = 1; i <= ultimaPosicion && contador < 5; i++) {
-			if (heap[i].prioridad == prioridad) {
-				cout << heap[i].nombre << " (Prioridad: " << heap[i].prioridad << ")" << endl;
-				contador++;
-			}
-		}
+    for (int i = 1; i <= ultimaPosicion && contador < 5; i++) {
+        if (heap[i].prioridad == prioridad) {
+            cout << heap[i].nombre << " (P: " << heap[i].prioridad << ")\n";
+            contador++;
+        }
+    }
 
-		imprimirOrdenadoR(prioridad - 1, contador);
-	}
+    imprimirOrdenadoR(prioridad - 1, contador);
+}
+
 
 };
 
 int main() {
 	maxHeap cola(20);
-
+	
+	cola.insertar(6, "Pan", 3);
 	cola.insertar(8, "Pata", 5);
 	cola.insertar(6, "Pita", 3);
 	cola.insertar(4, "Pota", 2);
