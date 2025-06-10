@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
-//esto crea los asistentes, lo dejarC) aqui hasta que el hash estC) hecho para sacar los asistentes de ahi
+//esto crea los asistentes, lo dejaré aqui hasta que el hash esté hecho para sacar los asistentes de ahi
 struct Asistente {
-	int id;//este es el que se debe cambiar basicamente cuando el hash estC) hecho, porq ahi nos pide insertar un id(dni o qr)
+	int id;//este es el que se debe cambiar basicamente cuando el hash esté hecho, porq ahi nos pide insertar un id(dni o qr)
 	int prioridad;
 	char nombre[30];
 };
@@ -12,7 +12,7 @@ private:
 	Asistente* heap;
 	int tam;
 	int ultimaPosicion;
-//este copia el nombre ingresao a otro cha rpara que el heap pueda imprimirlo
+//este copia el nombre ingresado a otro char para que el heap pueda imprimirlo
 	void copiarNombre(char* destino, const char* fuente) {
 		int i = 0;
 		while (fuente[i] != '\0' && i < 29) {
@@ -31,7 +31,7 @@ public:
 
 	void insertar(int id, const char* nombre, int prioridad) {
 		if (ultimaPosicion + 1 >= tam) {
-			cout << "El heap ests! lleno." << endl;
+			cout << "El heap esta lleno." << endl;
 			return;
 		}
 
@@ -39,7 +39,7 @@ public:
 		heap[ultimaPosicion].id = id;
 		heap[ultimaPosicion].prioridad = prioridad;
 		copiarNombre(heap[ultimaPosicion].nombre, nombre);
-
+//el while reordena los elementos, si la prioridad de X elemento es superior a la de su padre, se intercambian para que el heap mantenga la propiedad de max-heap
 		int i = ultimaPosicion;
 		while (i > 1 && heap[i].prioridad > heap[i/2].prioridad) {
 			swap(heap[i], heap[i/2]);
@@ -48,8 +48,7 @@ public:
 	}
 
 	void imprimirOrdenado() {
-		int contador = 0;
-		imprimirOrdenadoR(5, contador);
+		imprimirOrdenadoR(5, 0);
 	}
 
 	void imprimirOrdenadoR(int prioridad, int& contador) {
@@ -57,7 +56,7 @@ public:
 
 		for (int i = 1; i <= ultimaPosicion && contador < 5; i++) {
 			if (heap[i].prioridad == prioridad) {
-				cout << heap[i].nombre << " (P: " << heap[i].prioridad << ")\n";
+				cout << heap[i].nombre << " (Prioridad: " << heap[i].prioridad << ")" << endl;
 				contador++;
 			}
 		}
