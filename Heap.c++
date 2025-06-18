@@ -71,12 +71,12 @@ void imprimirOrdenadoR(int prioridad, int& contador) {
 int main() {
 	maxHeap cola(20);
 	
-	cola.insertar(6, "Pan", 3);
-	cola.insertar(8, "Pata", 5);
-	cola.insertar(6, "Pita", 3);
-	cola.insertar(4, "Pota", 2);
-	cola.insertar(3, "Pedro", 1);
-	cola.insertar(9, "Peta", 4);
+	cola.insertar(6, "Pedro", 3);
+	cola.insertar(8, "Juan", 5);
+	cola.insertar(6, "Jose", 3);
+	cola.insertar(4, "Ramón", 2);
+	cola.insertar(3, "Timoteo", 1);
+	cola.insertar(9, "Pancracio", 4);
 
 	cout << "Asistentes en orden de prioridad:\n";
 	cola.imprimirOrdenado();
